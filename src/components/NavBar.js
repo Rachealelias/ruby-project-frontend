@@ -33,6 +33,11 @@ function NavBar(){
            }}
           to="/signup"
            >SignUp</NavLink> )}
+
+           <NavLink to ="/game/new">
+                New Game
+            </NavLink>
+
         </div>
     )
 }

@@ -6,6 +6,7 @@ import Logout from './components/Logout';
 import GamesContainer from './components/GamesContainer';
 import GameCard from './components/GameCard';
 import GameCardsPage from './components/GameCardsPage';
+import GameForm from './components/GameForm';
 
 import Home from './components/Home';
 
@@ -16,6 +17,11 @@ function App() {
         <Router>
          
           <Switch>
+
+          <Route path="/game/new">
+            <GameForm />
+          </Route>
+        
 
           <Route path="/games">
             <GamesContainer />
@@ -28,7 +34,8 @@ function App() {
           <Route path="/games/:id">
             <GameCard />
           </Route>
-        
+
+          
         <Route exact path="/signup">
           <SignUp />
         </Route>
