@@ -1,19 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
 import { UserProvider } from './context/User';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import SignUp from './components/SignUp';
 import Login from './components/Login';
 import Logout from './components/Logout';
-import NavBar from './components/NavBar'
+import GamesContainer from './components/GamesContainer';
+import GameCard from './components/GameCard';
+import GameCardsPage from './components/GameCardsPage';
+
+import Home from './components/Home';
 
 function App() {
   return (
     <div className="App">
       <UserProvider>
         <Router>
-          <NavBar/>
+         
           <Switch>
+
+          <Route path="/games">
+            <GamesContainer />
+          </Route>
+
+          <Route path="/gamescards">
+            <GameCardsPage />
+          </Route>
+
+          <Route path="/games/:id">
+            <GameCard />
+          </Route>
+        
         <Route exact path="/signup">
           <SignUp />
         </Route>
@@ -25,6 +40,15 @@ function App() {
         <Route exact path="/logout">
           <Logout />
         </Route>
+
+        <Route exact path="/">
+          <Home />
+        </Route>
+
+         <Route path="*">
+          <h3>404 Page Not Found</h3>
+        </Route> 
+       
         </Switch>
       </Router>
       </UserProvider>

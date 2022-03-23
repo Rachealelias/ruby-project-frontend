@@ -7,7 +7,7 @@ function Logout() {
     const {setUser} = useContext(UserContext)
     useEffect(() => {
         setUser(null)
-        history.push("/signup")
+        history.push("/")
     }, [])
     
     return (

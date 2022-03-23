@@ -1,0 +1,42 @@
+.home{
+    background-image:url("https://appmonet.com/wp-content/uploads/2020/01/blog-1.jpg");
+   background-repeat: no-repeat;
+   background-size: cover;
+   height:650px;
+   background-position: center;
+}
+
+img{
+    max-height:400px;
+    max-width:370px;
+    display: flex;
+    flex-direction: column;
+}
+
+.gamecard{
+    display: flex;
+ flex-wrap: wrap;
+}
+
+.nav-bar {
+    width: 100%;
+    padding: 1rem;
+    background-color: rgb(0,0,0);
+    font-weight: bold;
+    vertical-align: center;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .games{
+    max-height:300px;
+    max-width:270px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .container{
+    display: flex;
+    flex-wrap: wrap;
+  }

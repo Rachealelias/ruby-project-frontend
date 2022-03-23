@@ -38,7 +38,7 @@ const SignUp = () => {
         .then((data) => {
             
             setUser(data)
-            history.push("/games")
+            history.push("/gamescards")
         })
     }
     })
