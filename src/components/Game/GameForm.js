@@ -28,7 +28,7 @@ const GameForm = () => {
             user_id: game.user_id
         }
 
-        fetch("http://localhost:9292/games", {
+        fetch("/games", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -42,10 +42,13 @@ const GameForm = () => {
         <>
             <h3>Create a new Game</h3>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="score">Score</label>
-                <input onChange={handleChange} type="text" name="score" value={game.score} required/><br />
-                <label htmlFor="total-time">Total Time</label>
-                <input onChange={handleChange} type="text" name="total_time" value={game.total_time} required/><br />
+                <label htmlFor="name">Name</label>
+                <input onChange={handleChange} type="text" name="name" value={game.name} required/><br />
+                <label htmlFor="image_url">Image Url</label>
+                <input onChange={handleChange} type="text" name="image_url" value={game.image_url} required/><br />
+                <label htmlFor="likes">Likes</label>
+                <input onChange={handleChange} type="number" name="likes" value={game.likes} required/><br />
+                
                 <label htmlFor="user_id">User</label>
                 <input onChange={handleChange} type="number" name="user_id" value={game.user_id} required/><br />
                 

@@ -1,6 +1,6 @@
 import {useState, useEffect} from "react"
 import GamesList from "./GamesList";
-import "./css/style.css"
+import "../css/style.css"
 
 const GamesContainer = () => {
     const [games, setGames] = useState([]);
@@ -11,6 +11,7 @@ const GamesContainer = () => {
             try {
                 const resp = await fetch("http://localhost:9292/games")
                 const data = await resp.json()
+                debugger
                 setGames(data)
                 setLoading(false)
             } catch (error) {
@@ -33,10 +34,10 @@ const GamesContainer = () => {
     }
 
     return (
-        <>
-            <h2>Our Games</h2>
+        <div className="container">
+            {/* <h2>Our Games</h2> */}
             <GamesList games={games} deleteGame={deleteGame}/>
-        </>
+        </div>
     )
 }
 

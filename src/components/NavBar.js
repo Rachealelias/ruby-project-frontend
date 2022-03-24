@@ -16,10 +16,7 @@ function NavBar(){
                 Games
             </NavLink>
 
-            <NavLink to ="/gamescards">
-                GameCards
-            </NavLink>
-           
+            
            {user ? <NavLink
            activeStyle={{
                fontWeight:"bolder",

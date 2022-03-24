@@ -3,10 +3,10 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import SignUp from './components/SignUp';
 import Login from './components/Login';
 import Logout from './components/Logout';
-import GamesContainer from './components/GamesContainer';
-import GameCard from './components/GameCard';
-import GameCardsPage from './components/GameCardsPage';
-import GameForm from './components/GameForm';
+import GamesContainer from './components/Game/GamesContainer';
+import GameCard from './components/Game/GameCard';
+import CommentForm from './components/Comment/CommentForm';
+import GameForm from './components/Game/GameForm';
 
 import Home from './components/Home';
 
@@ -18,6 +18,10 @@ function App() {
          
           <Switch>
 
+          <Route path="/comment">
+            <CommentForm />
+          </Route>
+
           <Route path="/game/new">
             <GameForm />
           </Route>
@@ -27,9 +31,6 @@ function App() {
             <GamesContainer />
           </Route>
 
-          <Route path="/gamescards">
-            <GameCardsPage />
-          </Route>
 
           <Route path="/games/:id">
             <GameCard />
