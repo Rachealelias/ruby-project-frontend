@@ -4,8 +4,8 @@ import {useHistory} from "react-router-dom"
 const CommentForm = () => {
     const [comment, setComment] = useState({
         comment: "",
-        game: "",
-        user: ""
+        game_id: "",
+        user_id: ""
     });
     const history = useHistory()
 
@@ -18,17 +18,17 @@ const CommentForm = () => {
 
     const handleSubmit = e => {
         e.preventDefault()
-        if ([comment.comment, comment.user, comment.game].some(val => val.trim() === "")) {
+        if ([comment.comment, comment.game_id, comment.user_id].some(val => val.trim() === "")) {
             alert("You must fill in all the information please!")
         }
 
         const newComment = {
             comment: comment.comment,
-            game: comment.game,
-            user: comment.user
+            game_id: comment.game_id,
+            user_id: comment.user_id
         }
 
-        fetch("/comments", {
+        fetch("http://localhost:9292/comments", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -44,10 +44,10 @@ const CommentForm = () => {
             <form onSubmit={handleSubmit}>
                 <label htmlFor="comment">Comment</label>
                 <input onChange={handleChange} type="text" name="comment" value={comment.comment} required/><br />
-                <label htmlFor="game">Game Name</label>
-                <input onChange={handleChange} type="text" name="game" value={comment.game} required/><br />
-                <label htmlFor="user">Username</label>
-                <input onChange={handleChange} type="text" name="game" value={comment.user} required/><br />
+                <label htmlFor="game">Game </label>
+                <input onChange={handleChange} type="text" name="game_id" value={comment.game_id} required/><br />
+                <label htmlFor="user">User</label>
+                <input onChange={handleChange} type="text" name="user_id" value={comment.user_id} required/><br />
                 
                 <input type="submit" value="Create Comment" />
             </form>

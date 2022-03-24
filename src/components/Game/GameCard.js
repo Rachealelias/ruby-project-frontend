@@ -3,10 +3,20 @@ import { useState, useEffect } from "react"
 import { Link, useParams, useLocation } from "react-router-dom"
 import "../css/style.css"
 
-function GamesCard({ game, deleteGame }) {
+function GamesCard({ game, deleteGame, comments}) {
   const { id } = useParams()
   const location = useLocation()
   const [gameObj, setGameObj] = useState(null);
+  const [like, setLike] = useState(0)
+  
+  //const like = document.querySelector('h4').innerHTML()
+
+  function addLike(){
+    setLike((like) => like + 1)
+}
+
+
+  
   useEffect(() => {
     if (!game) {
       fetch(`http://localhost:9292/games/${id}`)
@@ -36,10 +46,12 @@ function GamesCard({ game, deleteGame }) {
     <div className='games'>
       <img src={finalGame.image_url} alt="cards" />
       <h3>Name: <Link to={`/games/${finalGame.id}`}>{finalGame.name}</Link></h3>
-      <h3> likes: {finalGame.likes}</h3>
+      <h4 id='like'> likes: {finalGame.likes + like}</h4>
       {/* <h4>User: {finalGame.user_id}</h4> */}
       {location.pathname !== "/games" ? (<div><button onClick={handleDeleteClick}>Delete</button>
-        <Link to='/comment'><button>Add Comment</button></Link>
+        <Link to='/comments/new'><button>Add Comment</button></Link>
+        <button onClick={addLike}> 👍</button>
+        
         </div>) : null}
 
     </div>

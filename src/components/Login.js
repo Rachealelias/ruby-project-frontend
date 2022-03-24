@@ -24,7 +24,7 @@ const Login = () => {
         alert("please fill in all required information")
         }
     
-    fetch("/login", {
+    fetch("http://localhost:9292/login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

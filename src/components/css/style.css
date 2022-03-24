@@ -7,7 +7,12 @@
    background-position: center;
 }
 
-
+img{
+    max-height:550px;
+    max-width:350px;
+    display: flex;
+    flex-direction: column;
+}
 
 
 .nav-bar {

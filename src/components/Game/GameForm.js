@@ -3,8 +3,9 @@ import {useHistory} from "react-router-dom"
 
 const GameForm = () => {
     const [game, setGame] = useState({
-        score: "",
-        total_time: "",
+        name: "",
+        image_url: "",
+        likes: "",
         user_id: ""
     });
     const history = useHistory()
@@ -18,17 +19,18 @@ const GameForm = () => {
 
     const handleSubmit = e => {
         e.preventDefault()
-        if ([game.score, game.total_time, game.user_id].some(val => val.trim() === "")) {
+        if ([game.name, game.image_url, game.likes, game.user_id].some(val => val.trim() === "")) {
             alert("You must fill in all the information please!")
         }
 
         const newGame = {
-            score: game.score,
-            total_time: game.total_time,
+            name: game.name, 
+            image_url: game.image_url,
+            likes:  game.likes, 
             user_id: game.user_id
         }
 
-        fetch("/games", {
+        fetch("http://localhost:9292/games", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

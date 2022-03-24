@@ -7,6 +7,8 @@ import GamesContainer from './components/Game/GamesContainer';
 import GameCard from './components/Game/GameCard';
 import CommentForm from './components/Comment/CommentForm';
 import GameForm from './components/Game/GameForm';
+import CommentContainer from './components/Comment/CommentContainer';
+import NavBar from './components/NavBar';
 
 import Home from './components/Home';
 
@@ -15,15 +17,20 @@ function App() {
     <div className="App">
       <UserProvider>
         <Router>
+        <NavBar/>
          
           <Switch>
 
-          <Route path="/comment">
+          <Route path="/comments/new">
             <CommentForm />
           </Route>
 
           <Route path="/game/new">
             <GameForm />
+          </Route>
+
+          <Route path="/comments">
+            <CommentContainer />
           </Route>
         
 
