@@ -28,7 +28,7 @@ function GamesCard({ game, deleteGame, comments}) {
   if (!finalGame) return <h1>Loading...</h1>
 
   function handleDeleteClick() {
-    fetch(`/games/${game.id}`, {
+    fetch(`http://localhost:9292/games/${game.id}`, {
       method: "DELETE",
     })
       .then(r => r.json())

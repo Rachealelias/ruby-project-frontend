@@ -36,7 +36,7 @@ const Login = () => {
         resp.json()
         .then((data) => {
             setUser(data.user)
-            history.push("/gamescards")
+            history.push("/games")
         })
     }else {
         resp.json()
