@@ -16,6 +16,8 @@ function NavBar(){
                 Games
             </NavLink>
 
+           
+
             <NavLink to ="/comments">
                 Comments
             </NavLink>
