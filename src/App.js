@@ -10,7 +10,6 @@ import GameForm from './components/Game/GameForm';
 import CommentContainer from './components/Comment/CommentContainer';
 import NavBar from './components/NavBar';
 import EditGames from './components/EditGames';
-
 import Home from './components/Home';
 
 function App() {
@@ -26,9 +25,10 @@ function App() {
             <CommentForm />
           </Route>
 
-          {/* <Route path="/edit">
+          
+          <Route path="/edit">
             <EditGames />
-          </Route> */}
+          </Route> 
 
           <Route path="/game/new">
             <GameForm />

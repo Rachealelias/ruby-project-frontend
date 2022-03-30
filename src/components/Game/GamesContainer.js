@@ -11,7 +11,7 @@ const GamesContainer = () => {
             try {
                 const resp = await fetch("http://localhost:9292/games")
                 const data = await resp.json()
-                debugger
+            
                 setGames(data)
                 setLoading(false)
             } catch (error) {

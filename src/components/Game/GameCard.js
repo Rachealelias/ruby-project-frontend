@@ -5,6 +5,7 @@ import "../css/style.css"
 import EditGames from '../EditGames'
 
 function GamesCard({ game, deleteGame, comments}) {
+  
   const {id} = useParams()
   const location = useLocation()
   const [gameObj, setGameObj] = useState(null);
@@ -21,11 +22,12 @@ function GamesCard({ game, deleteGame, comments}) {
   
   useEffect(() => {
     if (!game) {
-      fetch(`http://localhost:9292/games/${id}`)
+      fetch(`http://localhost:9292/games/${game.id}`)
         .then((resp) => resp.json())
         .then((game) => setGameObj(game))
     }
   }, [game, id]);
+  
   const finalGame = game ? game : gameObj
   if (!finalGame) return <h1>Loading...</h1>
 
@@ -47,7 +49,8 @@ function GamesCard({ game, deleteGame, comments}) {
 
 
   return (
-    <div className='games'>
+    <div className='game-container'>
+      <div className='game-card'>
       {isEditing ? (
         <EditGames id={id} game={finalGame} onEdit={handleUpdate} />) :(
         <h3>
@@ -56,16 +59,16 @@ function GamesCard({ game, deleteGame, comments}) {
         </h3>
       )}
       <img src={finalGame.image_url} alt="cards" />
-      <h3>Name: <Link to={`/games/${finalGame.id}`}>{finalGame.name}</Link></h3>
+      <h3>Name:<Link to={`/games/${finalGame.id}`}>{finalGame.name}</Link></h3>
       <h4 id='like'> likes: {finalGame.likes + like}</h4>
-      {/* <h4>User: {finalGame.user_id}</h4> */}
-      {location.pathname !== "/games" ? (<div><button onClick={handleDeleteClick}>Delete</button>
+      
+         {location.pathname !== "/games" ? (<div className='display'><button onClick={handleDeleteClick}>Delete</button>
         <Link to='/comments/new'><button>Add Comment</button></Link>
         <button onClick={addLike}> 👍</button>
-        <button onClick={() => setIsEditing((isEditing) => !isEditing)}>Edit</button>
-        
-        </div>) : null}
-
+       <button onClick={() => setIsEditing((isEditing) => !isEditing)}>Edit</button>
+        <ul>{finalGame.comments.map(comment => <li>{comment.comment}</li>)}</ul>
+        </div>) : null }
+        </div>
     </div>
   )
 

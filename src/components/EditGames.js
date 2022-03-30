@@ -1,11 +1,11 @@
-import { useState} from "react";
-import { useHistory, useParams} from "react-router-dom";
+import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 
-const EditGames = ({game, onEdit}) => {
-    
+const EditGames = ({ game, onEdit }) => {
+
     const [editGameObj, setEditGameObj] = useState(game)
-    const {id} = useParams()   
+    // const { id } = useParams()
     const history = useHistory()
 
     const handleChange = (e) => {
@@ -17,38 +17,35 @@ const EditGames = ({game, onEdit}) => {
 
     const newGame = {
         name: editGameObj.name,
-        }
-    
-        const handleSubmit = e => {
+    }
+
+    const handleSubmit = (e) => {
         e.preventDefault()
-           fetch(`http://localhost:9292/games/${id}`, {
-        method: "PATCH",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newGame)
-    })
-    .then(resp => {
-        if (resp.status === 200) {
-        resp.json()
+        fetch(`http://localhost:9292/games/${game.id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newGame)
+        })
+        .then((resp) => resp.json())
         .then((updatedGame) => {
-            
             onEdit(updatedGame)
             history.push("/games")
         })
         .catch(error => console.log(error))
-    }
-    })
-}
-    return(
-        <div>
-           <form onSubmit={handleSubmit}>
-           <label htmlFor="name">Name</label>
-                <input onChange={handleChange} type="text" name="name" id="name" value={editGameObj.name} required/> <br /><br />
-                
-                <input type="submit" value="Save" />
-            </form>  
+        history.push("/games")
             
+    }
+    return (
+        <div>
+            <form onSubmit={handleSubmit}>
+                <label htmlFor="name">Name</label>
+                <input onChange={handleChange} type="text" name="name" id="name" value={editGameObj.name} required /> <br /><br />
+
+                <input type="submit" value="Save" />
+            </form>
+
         </div>
     )
 }
