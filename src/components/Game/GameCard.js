@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from "react"
 import { Link, useParams, useLocation } from "react-router-dom"
 import "../css/style.css"
-import EditGames from '../EditGames'
+
 
 function GamesCard({ game, deleteGame, comments}) {
   
@@ -10,7 +10,7 @@ function GamesCard({ game, deleteGame, comments}) {
   const location = useLocation()
   const [gameObj, setGameObj] = useState(null);
   const [like, setLike] = useState(0)
-  const [isEditing, setIsEditing] = useState(false)
+  
   
   //const like = document.querySelector('h4').innerHTML()
 
@@ -18,8 +18,6 @@ function GamesCard({ game, deleteGame, comments}) {
     setLike((like) => like + 1)
 }
 
-
-  
   useEffect(() => {
     if (!game) {
       fetch(`http://localhost:9292/games/${game.id}`)
@@ -43,21 +41,11 @@ function GamesCard({ game, deleteGame, comments}) {
       });
   }
 
-  const handleUpdate = () => {
-    setIsEditing(true)
-  }
-
 
   return (
     <div className='game-container'>
       <div className='game-card'>
-      {isEditing ? (
-        <EditGames id={id} game={finalGame} onEdit={handleUpdate} />) :(
-        <h3>
-          {' '}
-          {/* {finalGame.name}{' '} */}
-        </h3>
-      )}
+      
       <img src={finalGame.image_url} alt="cards" />
       <h3>Name:<Link to={`/games/${finalGame.id}`}>{finalGame.name}</Link></h3>
       <h4 id='like'> likes: {finalGame.likes + like}</h4>
@@ -65,7 +53,6 @@ function GamesCard({ game, deleteGame, comments}) {
          {location.pathname !== "/games" ? (<div className='display'><button onClick={handleDeleteClick}>Delete</button>
         <Link to='/comments/new'><button>Add Comment</button></Link>
         <button onClick={addLike}> 👍</button>
-       <button onClick={() => setIsEditing((isEditing) => !isEditing)}>Edit</button>
         <ul>{finalGame.comments.map(comment => <li>{comment.comment}</li>)}</ul>
         </div>) : null }
         </div>

@@ -25,8 +25,7 @@ const GameForm = () => {
 
         const newGame = {
             name: game.name, 
-            image_url: game.image_url,
-            likes:  game.likes, 
+            image_url: game.image_url,  
             user_id: game.user_id
         }
 
@@ -48,9 +47,6 @@ const GameForm = () => {
                 <input onChange={handleChange} type="text" name="name" value={game.name} required/><br />
                 <label htmlFor="image_url">Image Url</label>
                 <input onChange={handleChange} type="text" name="image_url" value={game.image_url} required/><br />
-                <label htmlFor="likes">Likes</label>
-                <input onChange={handleChange} type="number" name="likes" value={game.likes} required/><br />
-                
                 <label htmlFor="user_id">User</label>
                 <input onChange={handleChange} type="number" name="user_id" value={game.user_id} required/><br />
                 
